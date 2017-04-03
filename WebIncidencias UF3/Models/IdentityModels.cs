@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 
 namespace WebIncidencias_UF3.Models
 {
@@ -13,9 +14,12 @@ namespace WebIncidencias_UF3.Models
         {
             // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            userIdentity.AddClaim(new Claim("HoraSesion", DateTime.Now.ToString()));
+            userIdentity.AddClaim(new Claim("Id", userIdentity.GetUserId()));
             // Agregar aquí notificaciones personalizadas de usuario
             return userIdentity;
         }
+        public string Nombre { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +33,9 @@ namespace WebIncidencias_UF3.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<WebIncidencias_UF3.Models.Mantenimientos.TiposIncidencias> TiposIncidencias { get; set; }
+        public DbSet<WebIncidencias_UF3.Models.Mantenimientos.Distribuidores> Distribuidores { get; set; }
+        public DbSet<WebIncidencias_UF3.Models.Mantenimientos.Dispositivos> Dispositivos { get; set; }
+        public DbSet<WebIncidencias_UF3.Models.Incidencias.Incidencias> Incidencias { get; set; }
     }
 }

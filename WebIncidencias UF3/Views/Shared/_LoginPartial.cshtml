@@ -5,12 +5,26 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
+        <div class="header-block header-block-nav">
+            <ul class="nav-profile">
+                <li class="profile">
+                    <a class="dropdown-item" ref="#" role="button">
+                            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </a>
+                </li>
+                <li class="profile">
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"> Logout </a>
+                </li>
+            </ul>
+        </div>
+
+
+    @*<ul class="nav navbar-nav navbar-right">
         <li>
             @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
-    </ul>
+    </ul>*@
     }
 }
 else
@@ -20,3 +34,7 @@ else
         <li>@Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+
+
+

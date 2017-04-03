@@ -1,57 +1,163 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+﻿<!doctype html>
+<html class="no-js" lang="en">
 
-    <script type = 'text/javascript' >
-        var appInsights=window.appInsights||function(config)
-        {
-            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
-            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
-        }({
-            instrumentationKey:'ad28dd04-4981-47c2-99e3-e2d5f3ad036f'
-        });
-        
-        window.appInsights=appInsights;
-        appInsights.trackPageView();
-    </script>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> WebIncidencias UF3 </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="~/Content/app.css" rel="stylesheet" />
+    <link href="~/Content/vendor.css" rel="stylesheet" />
+    <!-- Theme initialization -->
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
+    <div class="main-wrapper">
+        <div class="app" id="app">
+            <header class="header">
+                <div class="header-block header-block-collapse hidden-lg-up">
+                    <button class="collapse-btn" id="sidebar-collapse-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="header-block header-block-search hidden-sm-down">
+
+                </div>
                 @Html.Partial("_LoginPartial")
-            </div>
+            </header>
+            <aside class="sidebar">
+                <div class="sidebar-container">
+                    <div class="sidebar-header">
+                        <div class="brand">
+                            <div class="logo"> <span class="l l1"></span> <span class="l l2"></span> <span class="l l3"></span> <span class="l l4"></span> <span class="l l5"></span> </div> WebIncidencias UF3
+                        </div>
+                    </div>
+                    <nav class="menu">
+                        <ul class="nav metismenu" id="sidebar-menu">
+                            <li>
+                                <a href="@Url.Action("Index", "Home")"> <i class="fa fa-home"></i> Inicio </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Incidencias")"> <i class="fa fa-list-alt"></i> Incidencias </a>
+                            </li>
+                            <li >
+                                <a href="#"> <i class="fa fa-cog"></i> Mantenimientos <i class="fa arrow"></i> </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Usuarios", "Index", "ApplicationUsers")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Perfiles", "Index", "Perfiles")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Tipos de Incidencias", "Index", "TiposIncidencias")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Distribuidores", "Index", "Distribuidores")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Dispositivos", "Index", "Dispositivos")
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+            <article class="content static-tables-page">
+                <div class="title-block">
+                    <h1 class="title"> @ViewBag.Title </h1>
+                </div>
+                <section class="section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-block">
+                                    <section class="example">
+                                        @RenderBody()
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <footer class="footer">
+                <div class="footer-block author">
+                    <p>&copy; @DateTime.Now.Year - WebIncidencias UF3</p>
+                </div>
+            </footer>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    <!-- Reference block for JS -->
+    <script src="~/Scripts/vendor.js"></script>
+    <script src="~/Scripts/app.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
+
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - WebIncidencias UF3</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <script type = 'text/javascript' >
+            var appInsights=window.appInsights||function(config)
+            {
+                function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
+                var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
+            }({
+                instrumentationKey:'ad28dd04-4981-47c2-99e3-e2d5f3ad036f'
+            });
+
+            window.appInsights=appInsights;
+            appInsights.trackPageView();
+        </script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("WebIncidencias UF3", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@

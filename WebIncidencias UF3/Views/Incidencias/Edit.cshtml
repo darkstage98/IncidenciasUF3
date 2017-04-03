@@ -1,0 +1,63 @@
+﻿@model WebIncidencias_UF3.Models.Incidencias.Incidencias
+
+@{
+    Layout = "~/Views/Shared/_Edit.cshtml";
+}
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.FechaCreacion)
+@Html.HiddenFor(model => model.FechaCierre)
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Usuario.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.UsuarioId)
+        @Html.TextBoxFor(model => model.Usuario.Nombre, new { @class = "form-control", disabled = "" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DispositivoId, "DispositivoId", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("DispositivoId", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DispositivoId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.TipoIncidenciaId, "TipoIncidenciaId", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("TipoIncidenciaId", null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TipoIncidenciaId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Descripion, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Descripion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Descripion, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+        @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
+    </div>
+</div>
+@if (Model.FechaCierre != null)
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaCierre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FechaCierre, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+            @Html.ValidationMessageFor(model => model.FechaCierre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+}
+<div class="form-group" style="float:right;margin-top:10px;">
+    <div class="col-lg-10">
+        <input class="btn btn-primary" type="submit" name="submit" value="Cerrar" />
+    </div>
+</div>

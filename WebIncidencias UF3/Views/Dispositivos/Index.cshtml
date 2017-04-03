@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebIncidencias_UF3.Models.Mantenimientos.Dispositivos>
+
+@{
+    ViewBag.Title = "Dispositivos";
+}
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Crear</a>
+<table class="table">
+    <tr>
+        <th>
+        @Html.DisplayNameFor(model => model.MAC)
+        </th>
+        <th>
+            Nombre Distribuidor
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAdquisicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Garantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Averias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reparacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distribuidor.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAdquisicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Garantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Averias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reparacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAC }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAC }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAC })
+        </td>
+    </tr>
+}
+
+</table>

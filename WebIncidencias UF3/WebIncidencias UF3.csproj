@@ -198,13 +198,54 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Incidencias\IncidenciasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Mantenimientos\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\Mantenimientos\DispositivosController.cs" />
+    <Compile Include="Controllers\Mantenimientos\DistribuidoresController.cs" />
+    <Compile Include="Controllers\Mantenimientos\PerfilesController.cs" />
+    <Compile Include="Controllers\Mantenimientos\TiposIncidenciasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703271838256_initial.cs" />
+    <Compile Include="Migrations\201703271838256_initial.Designer.cs">
+      <DependentUpon>201703271838256_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703271842515_TiposIncidencias.cs" />
+    <Compile Include="Migrations\201703271842515_TiposIncidencias.Designer.cs">
+      <DependentUpon>201703271842515_TiposIncidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703281543013_TempTablas.cs" />
+    <Compile Include="Migrations\201703281543013_TempTablas.Designer.cs">
+      <DependentUpon>201703281543013_TempTablas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311440131_chguser.cs" />
+    <Compile Include="Migrations\201703311440131_chguser.Designer.cs">
+      <DependentUpon>201703311440131_chguser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311449501_nodate.cs" />
+    <Compile Include="Migrations\201703311449501_nodate.Designer.cs">
+      <DependentUpon>201703311449501_nodate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703311622319_userincidencia.cs" />
+    <Compile Include="Migrations\201703311622319_userincidencia.Designer.cs">
+      <DependentUpon>201703311622319_userincidencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704031747307_fecha-cierrenull.cs" />
+    <Compile Include="Migrations\201704031747307_fecha-cierrenull.Designer.cs">
+      <DependentUpon>201704031747307_fecha-cierrenull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Incidencias\Incidencias.cs" />
+    <Compile Include="Models\Inicio\InicioVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mantenimientos\Dispositivos.cs" />
+    <Compile Include="Models\Mantenimientos\Distribuidores.cs" />
+    <Compile Include="Models\Mantenimientos\TiposIncidencias.cs" />
+    <Compile Include="Models\Mantenimientos\UsuariosViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -213,17 +254,28 @@
     <Content Include="App_Data\LocalDB_log.ldf">
       <DependentUpon>LocalDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\app.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\vendor.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -235,6 +287,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\vendor.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -271,8 +324,56 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\TiposIncidencias\Create.cshtml" />
+    <Content Include="Views\TiposIncidencias\Delete.cshtml" />
+    <Content Include="Views\TiposIncidencias\Edit.cshtml" />
+    <Content Include="Views\TiposIncidencias\Index.cshtml" />
+    <Content Include="Views\Distribuidores\Create.cshtml" />
+    <Content Include="Views\Distribuidores\Delete.cshtml" />
+    <Content Include="Views\Distribuidores\Edit.cshtml" />
+    <Content Include="Views\Distribuidores\Index.cshtml" />
+    <Content Include="Views\Dispositivos\Create.cshtml" />
+    <Content Include="Views\Dispositivos\Delete.cshtml" />
+    <Content Include="Views\Dispositivos\Edit.cshtml" />
+    <Content Include="Views\Dispositivos\Index.cshtml" />
+    <Content Include="Views\Shared\_Create.cshtml" />
+    <Content Include="Views\Shared\_Edit.cshtml" />
+    <Content Include="Views\Incidencias\Create.cshtml" />
+    <Content Include="Views\Incidencias\Delete.cshtml" />
+    <Content Include="Views\Incidencias\Edit.cshtml" />
+    <Content Include="Views\Incidencias\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginStart.cshtml" />
+    <Content Include="Views\ApplicationUsers\Create.cshtml" />
+    <Content Include="Views\ApplicationUsers\Delete.cshtml" />
+    <Content Include="Views\ApplicationUsers\Edit.cshtml" />
+    <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Views\Perfiles\Index.cshtml" />
+    <Content Include="Views\Perfiles\Create.cshtml" />
+    <Content Include="Views\Perfiles\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201703271838256_initial.resx">
+      <DependentUpon>201703271838256_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271842515_TiposIncidencias.resx">
+      <DependentUpon>201703271842515_TiposIncidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703281543013_TempTablas.resx">
+      <DependentUpon>201703281543013_TempTablas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311440131_chguser.resx">
+      <DependentUpon>201703311440131_chguser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311449501_nodate.resx">
+      <DependentUpon>201703311449501_nodate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703311622319_userincidencia.resx">
+      <DependentUpon>201703311622319_userincidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704031747307_fecha-cierrenull.resx">
+      <DependentUpon>201704031747307_fecha-cierrenull.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -284,6 +385,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

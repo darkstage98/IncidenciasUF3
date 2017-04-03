@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebIncidencias_UF3.Models.Incidencias.Incidencias>
+
+@{
+    ViewBag.Title = "Incidencias";
+}
+
+<a href="@Url.Action("Create")" class="btn btn-primary">Crear</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Dispositivo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoIncidencia.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCierre)
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dispositivo.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoIncidencia.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCierre)
+            </td>
+            <td>
+                @if (item.FechaCierre != null)
+                {
+                    <i class="fa fa-lock"></i>
+                }
+                else
+                {
+                    <i class="fa fa-unlock"></i>
+                }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+    }
+
+</table>

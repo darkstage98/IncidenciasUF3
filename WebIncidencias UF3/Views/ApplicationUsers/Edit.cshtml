@@ -1,0 +1,46 @@
+﻿@model WebIncidencias_UF3.Models.Mantenimientos.UsuariosViewModel
+
+@{
+    Layout = "~/Views/Shared/_Edit.cshtml";
+}
+
+@Html.HiddenFor(model => model.Usuario.Id)
+@Html.HiddenFor(model => model.Usuario.UserName)
+@Html.HiddenFor(model => model.Usuario.PasswordHash)
+@Html.HiddenFor(model => model.Usuario.EmailConfirmed)
+@Html.HiddenFor(model => model.Usuario.SecurityStamp)
+@Html.HiddenFor(model => model.Usuario.PhoneNumber)
+@Html.HiddenFor(model => model.Usuario.PhoneNumberConfirmed)
+@Html.HiddenFor(model => model.Usuario.TwoFactorEnabled)
+@Html.HiddenFor(model => model.Usuario.LockoutEndDateUtc)
+@Html.HiddenFor(model => model.Usuario.LockoutEnabled)
+@Html.HiddenFor(model => model.Usuario.AccessFailedCount)
+<div class="form-group">
+    @Html.LabelFor(model => model.Usuario.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Usuario.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Usuario.Nombre, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Usuario.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Usuario.Email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Usuario.Email, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Usuario.Roles, "Perfil", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-lg-10">
+        @Html.DropDownListFor(model => model.PerfilId, (SelectList)ViewBag.Perfil, new { @class = "form-control" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Usuario.PasswordHash, "Nuevo Password", htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextBox("NPassword", null, new { @class = "form-control" })
+    </div>
+</div>
